@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface TechnologyService {
     List<GetAllTechnologiesResponse> getAll();
-    void add(CreateTechnologyRequest createTechnologyRequest);
-    void delete(DeleteTechnologyRequest deleteTechnologyRequest);
-    void update(UpdateTechnologyRequest updateTechnologyRequest);
+    void add(CreateTechnologyRequest createTechnologyRequest) throws Exception;
+    void delete(DeleteTechnologyRequest deleteTechnologyRequest) throws Exception;
+    void update(UpdateTechnologyRequest updateTechnologyRequest) throws Exception;
 }

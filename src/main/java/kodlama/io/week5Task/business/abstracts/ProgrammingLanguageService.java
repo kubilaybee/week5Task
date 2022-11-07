@@ -10,8 +10,8 @@ import java.util.List;
 
 public interface ProgrammingLanguageService {
     List<GetAllProgrammingLanguagesResponse> getAll();
-    GetByIdProgrammingLanguageResponse getById(int id);
-    void add(CreateProgrammingLanguageRequest createProgrammingLanguageRequest);
-    void delete(DeleteProgrammingLanguageRequest deleteProgrammingLanguageRequest);
-    void update(UpdateProgrammingLanguageRequest updateProgrammingLanguageRequest);
+    GetByIdProgrammingLanguageResponse getById(int id) throws Exception;
+    void add(CreateProgrammingLanguageRequest createProgrammingLanguageRequest) throws Exception;
+    void delete(DeleteProgrammingLanguageRequest deleteProgrammingLanguageRequest) throws Exception;
+    void update(UpdateProgrammingLanguageRequest updateProgrammingLanguageRequest) throws Exception;
 }

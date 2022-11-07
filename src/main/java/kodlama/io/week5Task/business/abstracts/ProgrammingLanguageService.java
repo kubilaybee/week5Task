@@ -13,5 +13,5 @@ public interface ProgrammingLanguageService {
     GetByIdProgrammingLanguageResponse getById(int id);
     void add(AddProgrammingLanguageRequest addProgrammingLanguageRequest);
     void delete(DeleteProgrammingLanguageRequest deleteProgrammingLanguageRequest);
-    void update(UpdateProgrammingLanguageRequest updateProgrammingLanguageRequest);
+    void update(int id,UpdateProgrammingLanguageRequest updateProgrammingLanguageRequest);
 }

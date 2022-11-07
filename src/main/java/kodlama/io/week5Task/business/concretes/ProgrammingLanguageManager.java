@@ -10,6 +10,7 @@ import kodlama.io.week5Task.dataAccess.abstracts.ProgrammingLanguageRepo;
 import kodlama.io.week5Task.entities.concretes.ProgrammingLanguage;
 import org.springframework.stereotype.Service;
 
+import java.security.PublicKey;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -45,16 +46,44 @@ public class ProgrammingLanguageManager implements ProgrammingLanguageService {
 
     @Override
     public void add(AddProgrammingLanguageRequest addProgrammingLanguageRequest) {
-
+        // TODO fix that
+        if (programmingLanguageExistValidator(addProgrammingLanguageRequest)&&programmingLanguageNameValidator(addProgrammingLanguageRequest)){
+            ProgrammingLanguage programmingLanguage = new ProgrammingLanguage();
+            programmingLanguage.setName(addProgrammingLanguageRequest.getName());
+            programmingLanguageRepo.save(programmingLanguage);
+        }
     }
 
     @Override
     public void delete(DeleteProgrammingLanguageRequest deleteProgrammingLanguageRequest) {
-
+        programmingLanguageRepo.deleteById(deleteProgrammingLanguageRequest.getId());
     }
 
     @Override
-    public void update(UpdateProgrammingLanguageRequest updateProgrammingLanguageRequest) {
+    public void update(int id,UpdateProgrammingLanguageRequest updateProgrammingLanguageRequest) {
+        if (!updateProgrammingLanguageRequest.getName().isEmpty()){
+            ProgrammingLanguage programmingLanguage = programmingLanguageRepo.findById(id).get();
+            programmingLanguage.setName(updateProgrammingLanguageRequest.getName());
+            programmingLanguageRepo.save(programmingLanguage);
+        }
+    }
 
+    // check if it is empty
+    public boolean programmingLanguageNameValidator(AddProgrammingLanguageRequest addProgrammingLanguageRequest){
+        if (addProgrammingLanguageRequest.getName().isEmpty()){
+            System.out.println("This language name is empty or blank.");
+        }
+        return !addProgrammingLanguageRequest.getName().isEmpty();
+    }
+
+    // check if it has been used before
+    public boolean programmingLanguageExistValidator(AddProgrammingLanguageRequest addProgrammingLanguageRequest){
+        for (ProgrammingLanguage programmingLanguage:programmingLanguageRepo.findAll()){
+            if (programmingLanguage.getName().equalsIgnoreCase(addProgrammingLanguageRequest.getName())){
+                System.out.println("This language has been already exist.");
+                return false;
+            }
+        }
+        return true;
     }
 }

@@ -12,5 +12,5 @@ public interface ProgrammingLanguageTechService {
     List<GetAllProgrammingLanguageTechResponse> getAll();
     void add(AddProgrammingLanguageTechRequest addProgrammingLanguageTechRequest);
     void delete(DeleteProgrammingLanguageTechRequest deleteProgrammingLanguageTechRequest);
-    void update(UpdateProgrammingLanguageTechRequest updateProgrammingLanguageTechRequest);
+    void update(int id,UpdateProgrammingLanguageTechRequest updateProgrammingLanguageTechRequest);
 }
